@@ -1,10 +1,24 @@
 
-
-# 50 20 10 5
 def coffeeMachine():
-    print("aaaa")
+    choiceFlag = False
+    while not choiceFlag:
+        choiceFlag = True
+        print("Drinks: (1) flat while, (2) latte, (3) espresso, (4) tea")
+        drinkChoice = int(input("Input your drink choice number: "))
+        if drinkChoice == 1:
+            drinkPrice = 75
+        elif drinkChoice == 2:
+            drinkPrice = 100
+        elif drinkChoice == 3:
+            drinkPrice = 50
+        elif drinkChoice == 4:
+            drinkPrice = 25
+        else:
+            print("Input not recognised")
+            choiceFlag = False
     change = 0
-    while change <= 75:
+    payFlag = False
+    while not payFlag:
         userInput = str(input("Insert a coin: "))
         match userInput:
             case "50":
@@ -17,17 +31,9 @@ def coffeeMachine():
                 change += 5
             case _:
                 print("Input not recognised.")
-    print(f"change owed: {change-75}p")
-
-
-
-''' implement a program that prompts the user to insert a coin, one at a time, each
-time informing the user of the amount due. Once the user has inputted at least 75p, output how much
-change they are owed. Make the assumption that the user will only enter integers, and ignore any unknown
-currency denomination.'''
-
-'''Once you have a working coffee machine, add more drinks to the system maybe hot chocolate and tea? or
-even add extra options like asking the user if they want an extra shot?'''
+        if change >= drinkPrice:
+            payFlag = True
+    print(f"change owed: {change-drinkPrice}p")
 
 
 if __name__ == "__main__":
